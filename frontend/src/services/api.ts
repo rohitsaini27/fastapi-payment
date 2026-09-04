@@ -102,3 +102,18 @@ export async function confirmPaymentAfterAction(
 
   return response.json();
 }
+
+
+export async function getPaymentStatus(
+  paymentId: string
+): Promise<Payment> {
+  const response = await fetch(
+    `${API_BASE_URL}/api/payment/${paymentId}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch payment status");
+  }
+
+  return response.json();
+}
